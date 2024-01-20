@@ -1,0 +1,11 @@
+name: MinecraftPluginTemplate
+version: '${project.version}'
+main: pe.bazan.luis.plugins.minecraftplugintemplate.MinecraftPluginTemplate
+api-version: '1.20'
+authors: [Luis Bazan]
+description: A Minecraft plugin template
+commands:
+  plugin-command:
+    permission: MinecraftPluginTemplate.commands
+    description: Main command of the plugin
+    usage: /plugin-command help
