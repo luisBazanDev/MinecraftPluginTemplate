@@ -4,10 +4,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pe.bazan.luis.plugins.minecraftplugintemplate.commands.CommandHandler;
 import pe.bazan.luis.plugins.minecraftplugintemplate.configs.MainConfig;
 import pe.bazan.luis.plugins.minecraftplugintemplate.events.JoinEvent;
+import pe.bazan.luis.plugins.minecraftplugintemplate.utils.UpdateChecker;
 
 public final class MinecraftPluginTemplate extends JavaPlugin {
     private static MinecraftPluginTemplate instance;
     public static String pluginId = "MinecraftPluginTemplate";
+    private UpdateChecker updateChecker = new UpdateChecker();
     private MainConfig mainConfig;
     private CommandHandler commandHandler;
 
@@ -18,6 +20,8 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
 
         loadConfigs();
         setUpCommandHandler();
+
+        updateChecker.check();
     }
 
     @Override
@@ -47,6 +51,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
      * Register events of the plugin
      */
     private void registerEvents() {
+        getServer().getPluginManager().registerEvents(updateChecker, this);
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
     }
 
