@@ -1,0 +1,6 @@
+messages:
+  welcome: "Hello from the plugin!"
+commands:
+  test:
+    no_player: "Hello world"
+    player: "Hello "

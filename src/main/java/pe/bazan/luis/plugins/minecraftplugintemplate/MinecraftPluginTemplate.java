@@ -3,6 +3,7 @@ package pe.bazan.luis.plugins.minecraftplugintemplate;
 import org.bukkit.plugin.java.JavaPlugin;
 import pe.bazan.luis.plugins.minecraftplugintemplate.commands.CommandHandler;
 import pe.bazan.luis.plugins.minecraftplugintemplate.configs.MainConfig;
+import pe.bazan.luis.plugins.minecraftplugintemplate.configs.MessagesConfig;
 import pe.bazan.luis.plugins.minecraftplugintemplate.events.JoinEvent;
 import pe.bazan.luis.plugins.minecraftplugintemplate.utils.UpdateChecker;
 
@@ -11,6 +12,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
     public static String pluginId = "MinecraftPluginTemplate";
     private UpdateChecker updateChecker = new UpdateChecker();
     private MainConfig mainConfig;
+    private MessagesConfig messagesConfig;
     private CommandHandler commandHandler;
 
     @Override
@@ -36,6 +38,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
      */
     private void loadConfigs() {
         mainConfig = new MainConfig(this);
+        messagesConfig = new MessagesConfig(this);
     }
 
     /**
@@ -63,5 +66,13 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
      */
     public static MinecraftPluginTemplate getInstance() {
         return instance;
+    }
+
+    public MainConfig getMainConfig() {
+        return mainConfig;
+    }
+
+    public MessagesConfig getMessagesConfig() {
+        return messagesConfig;
     }
 }

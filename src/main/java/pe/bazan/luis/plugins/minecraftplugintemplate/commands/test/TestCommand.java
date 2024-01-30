@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import pe.bazan.luis.plugins.minecraftplugintemplate.MinecraftPluginTemplate;
 import pe.bazan.luis.plugins.minecraftplugintemplate.commands.Command;
 import pe.bazan.luis.plugins.minecraftplugintemplate.commands.CommandInfo;
+import pe.bazan.luis.plugins.minecraftplugintemplate.enums.MessageKey;
+import pe.bazan.luis.plugins.minecraftplugintemplate.utils.Messages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +24,9 @@ public class TestCommand implements Command {
     @Override
     public boolean execute(MinecraftPluginTemplate plugin, CommandSender sender, String... args) {
         if (args.length == 0) {
-            sender.sendMessage("Hello world");
+            sender.sendMessage(Messages.getMessage(MessageKey.CMD_TEST_NO_PLAYER));
         } else {
-            sender.sendMessage("Hello " + args[0]);
+            sender.sendMessage(Messages.getMessage(MessageKey.CMD_TEST_PLAYER) + args[0]);
         }
         return true;
     }
